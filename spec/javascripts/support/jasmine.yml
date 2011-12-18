@@ -11,7 +11,11 @@
 #   - dist/**/*.js
 #
 src_files:
-    - public/javascripts/**/*.js
+    - public/vendor/underscore.js
+    - public/vendor/jquery.js
+    - public/vendor/backbone.js
+    - public/vendor/backbone-localstorage.js
+    - public/javascripts/kass.js
 
 # stylesheets
 #
@@ -70,4 +74,4 @@ src_dir:
 #
 # spec_dir: spec/javascripts
 #
-spec_dir:
+spec_dir: public/javascripts/spec
