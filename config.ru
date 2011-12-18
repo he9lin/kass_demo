@@ -1,0 +1,2 @@
+require './kass'
+run Kass
