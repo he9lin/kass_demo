@@ -2,7 +2,7 @@ require 'compass'
 require 'barista'
 require 'sinatra'
 
-class Kass < Sinatra::Base
+class App < Sinatra::Base
   register Barista::Integration::Sinatra
   
   configure do

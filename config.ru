@@ -1,2 +1,2 @@
-require './kass'
-run Kass
+require './app'
+run App
