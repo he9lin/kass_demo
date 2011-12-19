@@ -1,3 +1,108 @@
+@import "compass/reset";
+@import "compass/css3/inline-block";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import "compass/css3/text-shadow";
+@import "compass/css3/opacity";
+@import "compass/utilities/general/clearfix";
+@import "compass/typography/lists/horizontal-list";
+
+$light-color: #ccc;
+$font-color: #555;
+$bg-color: #f2f2f2;
+
+@mixin default-box-shadow {
+  @include box-shadow(0 1px rgba(255,255,255,0.2) inset, 0 3px 0 #227516);
+}
+
+@mixin round-alpha-border {
+  border: 5px solid rgba(0,0,0,0.3);
+  @include border-radius;
+}
+
+@mixin default-button {
+  background-color: #88DB7C;
+  border: 1px solid #227516;
+  @include default-box-shadow;
+}
+
+a.button {
+  cursor: pointer;
+}
+
 body {
-  background-color: red;
+  background-color: $bg-color;
+  font-family: Arial;
+  color: $font-color;
+  #main {
+    @include clearfix;
+    #wishes-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: lighten(yellow, 50%);
+      z-index: 10;
+    }
+    #wishes-map {
+      width: 100%;
+    }
+  }
+}
+
+div#detail-wish {
+  position: absolute;
+  top: 80px;
+  left: 400px;
+  #detail-wish-wrapper {
+    @include round-alpha-border;
+    background-color: #fff;
+    padding: 10px;
+  }
+}
+
+a#launch-wish {
+  @include default-button;
+  @include border-radius;
+  @include single-text-shadow(#222,0px,1px,1px);
+  color: #fff;
+  font-size: 1.4em;
+  font-weight: bold;
+  padding: 10px;
+  position: absolute;
+  top: 10px;
+  left: 400px;
+}
+
+div#wishes-map {
+  position: relative;
+  height: 500px;
+}
+
+div#wishes-menu {
+  div.wishes-list {
+    div.wish {
+      @include clearfix;
+      cursor: pointer;
+      a.delete, div.info {
+        float: left;
+        margin-right: 10px;
+        padding: 10px;
+      }
+      a.delete {
+        display: block;
+        color: $light-color;
+        &:hover { color: $font-color; }
+      }
+      div.info {
+        h3.title { 
+          float: left;
+          width: 200px;
+          margin-right: 10px;
+        }
+        div.meta {
+          float: left;
+        }
+      }
+    }
+  }
 }

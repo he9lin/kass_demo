@@ -6,16 +6,56 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <link rel="stylesheet" href="screen.css" media="screen" />
+    <link rel="stylesheet" href="facebox.css" media="screen" />
 
     <script src="/javascripts/vendor/jquery.js"></script>
     <script src="/javascripts/vendor/underscore.js"></script>
     <script src="/javascripts/vendor/backbone.js"></script>
+    <script src="/javascripts/vendor/facebox.js"></script>
+
+    <script src="/javascripts/kass/models.js"></script>
+    <script src="/javascripts/kass/collections.js"></script>
+    <script src="/javascripts/kass/views.js"></script>
+    <script src="/javascripts/kass/routers.js"></script>
     <script src="/javascripts/kass.js"></script>
 
     <!-- Templates -->
-    <script type="text/template" id="date-title-template">
-      <h1><%= app %></h1>
+    <script type="text/template" id="new-wish-template">
+      <input id="new-wish-title" name="wish[title]" type="text" placeholder="Enter a new wish..." />
+      <br />
+      <input id="new-wish-price" name="wish[price]" type="text" placeholder="For how much..." />
+      <br />
+      <input id="post-wish" type="submit" value="Post it!" />
     </script>
+
+    <script type="text/template" id="wishes-menu-template">
+      <div id="sort">Sort stuff</div>
+      <div class="wishes-list"></div>
+    </script>
+
+    <script type="text/template" id="unfilled-wish-template">
+      <a class="delete button">&times;</a>
+      <div class="info">
+        <h3 class="title"><%= title %></h3>
+        <div class="meta">
+          <h1 class="price"><%= price %></h1>
+        </div>
+      </div>
+    </script>
+
+    <script type="text/template" id="wishes-map-template">
+      <a id="launch-wish" class="button">Post any wish you want</a>
+      <div id='detail-wish'>
+      </div>
+    </script>
+
+    <script type="text/template" id="detail-wish-tempalte">
+      <div id='detail-wish-wrapper'>
+        <div class='header'>This person will pay</div>
+        <h3><%= price %> for <%= title %></h3>
+      </div>
+    </script>
+
   </head>
   <body>
     <div id="main">
