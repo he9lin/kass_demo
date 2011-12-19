@@ -53,6 +53,8 @@
 
       NewWishView.prototype.id = 'new-wish';
 
+      NewWishView.prototype.tagName = 'form';
+
       NewWishView.prototype.events = {
         'click input#post-wish': 'save'
       };

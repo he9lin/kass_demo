@@ -16,6 +16,7 @@ jQuery ->
   class NewWishView extends Backbone.View
     template: _.template $('#new-wish-template').html()
     id: 'new-wish'
+    tagName: 'form'
     events:
       'click input#post-wish': 'save'
     render: ->
