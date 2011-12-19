@@ -41,7 +41,13 @@ jQuery ->
       'click a#launch-wish': 'showNewWishForm'
     render: ->
       $(@el).html @template()
+      @resetDimension()
+      window.loadScript()
       @
+    resetDimension: -> 
+      $(@el).css
+        width: $(window).width()
+        height: $(window).height()
     showNewWishForm: ->
       $.facebox (new NewWishView collection: @collection).render().el
       

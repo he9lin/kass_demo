@@ -11,8 +11,9 @@ $light-color: #ccc;
 $font-color: #555;
 $bg-color: #f2f2f2;
 
+// single-box-shadow($color, $hoff, $voff, $blur, $spread, $inset)
 @mixin default-box-shadow {
-  @include box-shadow(0 1px rgba(255,255,255,0.2) inset, 0 3px 0 #227516);
+  @include single-box-shadow(#aaa, 3px, -1px, 5px, false, false);
 }
 
 @mixin round-alpha-border {
@@ -21,9 +22,9 @@ $bg-color: #f2f2f2;
 }
 
 @mixin default-button {
-  background-color: #88DB7C;
+  background: #88DB7C url(noise-overlay.png);
   border: 1px solid #227516;
-  @include default-box-shadow;
+  @include box-shadow(0 1px rgba(255,255,255,0.2) inset, 0 3px 0 #227516);
   @include border-radius;
   @include single-text-shadow(#222,0px,1px,1px);
   font-weight: bold;
@@ -49,7 +50,6 @@ body {
       z-index: 10;
     }
     #wishes-map {
-      width: 100%;
     }
   }
 }
@@ -77,7 +77,6 @@ a#launch-wish {
 
 div#wishes-map {
   position: relative;
-  height: 500px;
 }
 
 form#new-wish {
@@ -94,14 +93,22 @@ form#new-wish {
 }
 
 div#wishes-menu {
+  @include default-box-shadow;
+  height: 100%;
+  overflow: scroll;
   div.wishes-list {
     div.wish {
       @include clearfix;
+      @include text-shadow(#ebebeb);
       cursor: pointer;
+      background: #FFFFF5 url(noise-overlay.png);
+      border-bottom: 1px solid #f2f2f2;
+      border-top: 1px solid #ccc;
+      &:hover { background-color: #fff; }
       a.delete, div.info {
         float: left;
         margin-right: 10px;
-        padding: 10px;
+        padding: 20px 10px;
       }
       a.delete {
         display: block;
@@ -113,9 +120,11 @@ div#wishes-menu {
           float: left;
           width: 200px;
           margin-right: 10px;
+          font-size: 1.1em;
         }
         div.meta {
           float: left;
+          font-size: 1.4em;
         }
       }
     }
