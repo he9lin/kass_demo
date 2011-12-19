@@ -11,10 +11,20 @@
 #   - dist/**/*.js
 #
 src_files:
-    - public/vendor/underscore.js
-    - public/vendor/jquery.js
-    - public/vendor/backbone.js
-    - public/vendor/backbone-localstorage.js
+    - public/javascripts/vendor/underscore.js
+    - public/javascripts/vendor/jquery.js
+    - public/javascripts/vendor/backbone.js
+    - public/javascripts/vendor/backbone-localstorage.js
+    
+    - spec/javascripts/support/sinon-1.2.0.js
+    - spec/javascripts/support/jasmine-sinon.js
+    - spec/javascripts/support/jasmine-jquery.js
+    
+    - public/javascripts/kass/map.js
+    - public/javascripts/kass/models.js
+    - public/javascripts/kass/views.js
+    - public/javascripts/kass/collections.js
+    - public/javascripts/kass/routers.js
     - public/javascripts/kass.js
 
 # stylesheets

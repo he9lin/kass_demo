@@ -13,16 +13,17 @@
     <script src="/javascripts/vendor/backbone.js"></script>
     <script src="/javascripts/vendor/facebox.js"></script>
 
-    <script src="/javascripts/kass/map.js"></script>
     <script src="/javascripts/kass/models.js"></script>
     <script src="/javascripts/kass/collections.js"></script>
+    <script src="/javascripts/kass/map.js"></script>
     <script src="/javascripts/kass/views.js"></script>
     <script src="/javascripts/kass/routers.js"></script>
     <script src="/javascripts/kass.js"></script>
     
     <script type="text/javascript">
       function initialize() { 
-        new window.app.Map 
+        window.app.Map.render()
+        window.app.Wishes.addMarkers()
       }
       function loadScript() {
         var script = document.createElement("script");

@@ -5,18 +5,20 @@ jQuery ->
     initialize: (options) ->
       @collection.bind 'reset', @render, @
       @subviews = [
-        new WishesListView collection: @collection
         new WishesMapView  collection: @collection
+        new WishesListView collection: @collection
         ]
     render: ->  
       $(@el).empty()
       $(@el).append subview.render().el for subview in @subviews
+      @renderMap()
       @
+    renderMap: ->
+      window.loadScript() # Load map api
 
   class NewWishView extends Backbone.View
     template: _.template $('#new-wish-template').html()
     id: 'new-wish'
-    tagName: 'form'
     events:
       'click input#post-wish': 'save'
     render: ->
@@ -25,8 +27,10 @@ jQuery ->
     save: (event) ->
       event.preventDefault()
       newAttributes = 
-        title: @$('input#new-wish-title').val()
-        price: @$('input#new-wish-price').val()
+        title:      @$('input#new-wish-title').val()
+        content:    @$('input#new-wish-content').val()
+        price:      @$('input#new-wish-price').val()
+        expired_at: @$('input#new-wish-expired-at').val()
       errorCallback = 
         error: @flashWarning
       if @collection.create newAttributes, errorCallback
@@ -42,7 +46,6 @@ jQuery ->
     render: ->
       $(@el).html @template()
       @resetDimension()
-      window.loadScript()
       @
     resetDimension: -> 
       $(@el).css
@@ -52,6 +55,8 @@ jQuery ->
       $.facebox (new NewWishView collection: @collection).render().el
       
   class WishView extends Backbone.View
+    initialize: (options) ->
+      @model.bind 'marker:add', @addMarker, @
     template: _.template $('#unfilled-wish-template').html()
     className: 'wish'
     events:
@@ -64,6 +69,8 @@ jQuery ->
       @model.destroy()
     show: (event) ->
       (new DetailWishView model: @model).render().el
+    addMarker: ->
+      app.Map.addMarker @model.get('lat'), @model.get('lng')
   
   class DetailWishView extends Backbone.View
     el: '#detail-wish'
