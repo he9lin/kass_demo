@@ -20,7 +20,7 @@
       return this.map.panTo(point);
     };
 
-    Map.prototype.addMarker = function(lat, lng) {
+    Map.prototype.addMarker = function(lat, lng, content) {
       var marker, myIcon, point,
         _this = this;
       point = lng === void 0 ? lat : new BMap.Point(lat, lng);
@@ -32,8 +32,7 @@
         icon: myIcon
       });
       marker.addEventListener("click", function(event) {
-        _this.showInfoWindow('<h1>TOOD</h1>', point);
-        return _this.map.panTo(point);
+        return _this.focus(lat, lng, content);
       });
       this.map.addOverlay(marker);
       return marker;

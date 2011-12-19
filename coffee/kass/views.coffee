@@ -3,7 +3,7 @@ jQuery ->
   class AppView extends Backbone.View
     el: '#main'
     initialize: (options) ->
-      @collection.bind 'reset', @render, @
+      # @collection.bind 'reset', @render, @  # be careful
       @subviews = [
         new WishesMapView  collection: @collection
         new WishesListView collection: @collection
@@ -56,7 +56,8 @@ jQuery ->
       
   class WishView extends Backbone.View
     initialize: (options) ->
-      @model.bind 'marker:add', @addMarker, @
+      # Cache the detailed view
+      @detailWishViewCache = (new DetailWishView model: @model).render().el
     template: _.template $('#unfilled-wish-template').html()
     className: 'wish'
     events:
@@ -64,13 +65,14 @@ jQuery ->
       'click div.info': 'show'
     render: ->
       $(@el).html @template @model.toJSON()
+      @marker = @addMarker()
       @
     destroy: ->
       @model.destroy()
     show: (event) ->
-      (new DetailWishView model: @model).render().el
+      app.Map.focus @model.get('lat'), @model.get('lng'), @detailWishViewCache
     addMarker: ->
-      app.Map.addMarker @model.get('lat'), @model.get('lng')
+      app.Map.addMarker @model.get('lat'), @model.get('lng'), @detailWishViewCache
   
   class DetailWishView extends Backbone.View
     el: '#detail-wish'
@@ -83,6 +85,7 @@ jQuery ->
     template: _.template($('#wishes-menu-template').html())
     id: 'wishes-menu'
     initialize: (options) ->
+      @collection.bind 'reset',  @render, @
       @collection.bind 'change', @render, @
       @collection.bind 'add',    @render, @
       @collection.bind 'remove', @render, @

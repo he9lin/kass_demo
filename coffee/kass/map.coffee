@@ -11,7 +11,7 @@ class Map
     @showInfoWindow content, point
     @map.panTo point
     
-  addMarker: (lat, lng) ->
+  addMarker: (lat, lng, content) ->
     point = if lng is undefined
       lat
     else
@@ -25,8 +25,7 @@ class Map
     marker = new BMap.Marker point, icon: myIcon
     
     marker.addEventListener "click", (event) =>
-      @showInfoWindow '<h1>TOOD</h1>', point
-      @map.panTo point
+      @focus lat, lng, content
 
     @map.addOverlay marker
     marker

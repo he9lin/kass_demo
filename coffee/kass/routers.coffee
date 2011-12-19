@@ -4,8 +4,8 @@ jQuery ->
     routes:
       '': 'browseWishes'
     initialize: ->
-      app.Wishes.fetch()
       @view = new app.AppView collection: app.Wishes
+      @view.render()
     browseWishes: ->
       
   @app = window.app ? {}

@@ -15,12 +15,6 @@
 
     Wishes.prototype.url = '/api/wishes';
 
-    Wishes.prototype.addMarkers = function() {
-      return this.each(function(model) {
-        return model.trigger('marker:add');
-      });
-    };
-
     return Wishes;
 
   })(Backbone.Collection);

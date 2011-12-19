@@ -15,8 +15,12 @@
         });
       });
       it("sets latitude and longitude", function() {
-        expect(this.wish.get('lat')).toEqual(121.491);
-        return expect(this.wish.get('lng')).toEqual(31.233);
+        var coords;
+        coords = {
+          lat: this.wish.get('lat'),
+          lng: this.wish.get('lng')
+        };
+        return expect(coords).toBeCloseBy();
       });
       it("sets created at time", function() {
         return expect(this.wish.get('created_at')).toBeRecent;

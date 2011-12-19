@@ -16,7 +16,6 @@
       AppView.prototype.el = '#main';
 
       AppView.prototype.initialize = function(options) {
-        this.collection.bind('reset', this.render, this);
         return this.subviews = [
           new WishesMapView({
             collection: this.collection
@@ -138,7 +137,9 @@
       }
 
       WishView.prototype.initialize = function(options) {
-        return this.model.bind('marker:add', this.addMarker, this);
+        return this.detailWishViewCache = (new DetailWishView({
+          model: this.model
+        })).render().el;
       };
 
       WishView.prototype.template = _.template($('#unfilled-wish-template').html());
@@ -152,6 +153,7 @@
 
       WishView.prototype.render = function() {
         $(this.el).html(this.template(this.model.toJSON()));
+        this.marker = this.addMarker();
         return this;
       };
 
@@ -160,13 +162,11 @@
       };
 
       WishView.prototype.show = function(event) {
-        return (new DetailWishView({
-          model: this.model
-        })).render().el;
+        return app.Map.focus(this.model.get('lat'), this.model.get('lng'), this.detailWishViewCache);
       };
 
       WishView.prototype.addMarker = function() {
-        return app.Map.addMarker(this.model.get('lat'), this.model.get('lng'));
+        return app.Map.addMarker(this.model.get('lat'), this.model.get('lng'), this.detailWishViewCache);
       };
 
       return WishView;
@@ -205,6 +205,7 @@
       WishesListView.prototype.id = 'wishes-menu';
 
       WishesListView.prototype.initialize = function(options) {
+        this.collection.bind('reset', this.render, this);
         this.collection.bind('change', this.render, this);
         this.collection.bind('add', this.render, this);
         return this.collection.bind('remove', this.render, this);

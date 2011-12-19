@@ -17,10 +17,10 @@
       };
 
       KassRouter.prototype.initialize = function() {
-        app.Wishes.fetch();
-        return this.view = new app.AppView({
+        this.view = new app.AppView({
           collection: app.Wishes
         });
+        return this.view.render();
       };
 
       KassRouter.prototype.browseWishes = function() {};

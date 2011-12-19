@@ -12,8 +12,10 @@ describe 'Wish', ->
         expired_at: @later
     
     it "sets latitude and longitude", ->
-      expect(@wish.get 'lat').toEqual 121.491
-      expect(@wish.get 'lng').toEqual 31.233
+      coords =
+        lat: @wish.get 'lat'
+        lng: @wish.get 'lng'
+      expect(coords).toBeCloseBy()
     
     it "sets created at time", ->
       expect(@wish.get 'created_at').toBeRecent

@@ -3,8 +3,8 @@
 
 class Wish extends Backbone.Model
   defaults:
-    'lat': 121.491
-    'lng': 31.233
+    'lat': 121.491 + Math.floor(Math.random()*1000) / 1000
+    'lng': 31.233 + Math.floor(Math.random()*1000) / 1000
 
   validate: (attributes) ->
     # NOTE: attributes argument is ONLY the ones that changed.
