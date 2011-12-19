@@ -180,7 +180,7 @@
         DetailWishView.__super__.constructor.apply(this, arguments);
       }
 
-      DetailWishView.prototype.el = '#detail-wish';
+      DetailWishView.prototype.className = 'detail-wish';
 
       DetailWishView.prototype.template = _.template($('#detail-wish-tempalte').html());
 

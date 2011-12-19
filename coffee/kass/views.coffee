@@ -75,7 +75,7 @@ jQuery ->
       app.Map.addMarker @model.get('lat'), @model.get('lng'), @detailWishViewCache
   
   class DetailWishView extends Backbone.View
-    el: '#detail-wish'
+    className: 'detail-wish'
     template: _.template $('#detail-wish-tempalte').html() 
     render: ->
       $(@el).html @template @model.toJSON()

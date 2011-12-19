@@ -64,15 +64,13 @@ body {
   }
 }
 
-div#detail-wish {
-  #detail-wish-wrapper {
-    div.header {
-      font-size: 0.9em;
-      color: $font-color;
-      border-bottom: 1px solid $light-color;
-    }
-    h3 { font-size: 1.1em; line-height: 30px;} 
+div.detail-wish {
+  div.header {
+    font-size: 0.9em;
+    color: $font-color;
+    border-bottom: 1px solid $light-color;
   }
+  h3 { font-size: 1.1em; line-height: 30px;} 
 }
 
 a#launch-wish {
@@ -156,6 +154,7 @@ div#wishes-menu {
   @include default-box-shadow;
   height: 100%;
   overflow: scroll;
+  width: 340px;
   div.wishes-list {
     div.wish {
       @include clearfix;
