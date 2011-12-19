@@ -8,8 +8,14 @@
 @import "compass/typography/lists/horizontal-list";
 
 $light-color: #ccc;
+$border-color: #aaa;
 $font-color: #555;
 $bg-color: #f2f2f2;
+
+
+@mixin input-box-shadow {
+  @include single-box-shadow(rgba(0,0,0,0.2), 0, 1px, 1px, false, true);
+}
 
 // single-box-shadow($color, $hoff, $voff, $blur, $spread, $inset)
 @mixin default-box-shadow {
@@ -21,10 +27,14 @@ $bg-color: #f2f2f2;
   @include border-radius;
 }
 
-@mixin default-button {
-  background: #88DB7C url(noise-overlay.png);
-  border: 1px solid #227516;
-  @include box-shadow(0 1px rgba(255,255,255,0.2) inset, 0 3px 0 #227516);
+@mixin alt-button {
+  @include default-button(#F7886A, #973D2F);
+}
+
+@mixin default-button($bg-color: #88DB7C, $border-color: #227516) {
+  background: $bg-color url(noise-overlay.png);
+  border: 1px solid $border-color;
+  @include box-shadow(0 1px rgba(255,255,255,0.2) inset, 0 3px 0 $border-color);
   @include border-radius;
   @include single-text-shadow(#222,0px,1px,1px);
   font-weight: bold;
@@ -38,7 +48,7 @@ a.button {
 
 body {
   background-color: $bg-color;
-  font-family: Arial;
+  font-family: "Myriad Pro","myriad-pro-1","myriad-pro-2",arial,sans-serif;
   color: $font-color;
   #main {
     @include clearfix;
@@ -79,16 +89,66 @@ div#wishes-map {
   position: relative;
 }
 
-form#new-wish {
-  input[type=text] {
-    padding: 10px;
-    font-size: 1.2em;
-    @include border-radius;
-    border: 1px solid $light-color;
+#new-wish {
+  div.form-header {
+    height: 40px;
+    line-height: 40px;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    border-bottom: 1px solid $light-color;
+    text-indent: 20px;
+    background-color: #ebebeb;
   }
-  input[type=submit] {
-    @include default-button;
-    font-size: 1.1em;
+  form {
+    $input-full-width: 360px - 22px;
+    $input-half-width: 150px;
+    $input-margin-right: 16px;
+    padding: 20px;
+    width: 360px;
+    @include single-text-shadow(#fff,0px,1px,1px);
+    fieldset {
+      margin-bottom: 10px;
+      &.title-content input  {
+        margin: 0;
+        width: $input-full-width;
+      }
+      &.price-expired-at {
+        @include clearfix;
+        input {
+          margin: 0;
+          width: $input-half-width;
+          float: left;
+          @include border-radius;
+        }
+      }
+      input#new-wish-expired-at {
+        margin-right: $input-margin-right;
+      }
+      input#new-wish-title {
+        @include border-top-radius;
+        height: 14px;
+        font-size: 1.2em;
+      }
+      input#new-wish-content {
+        @include border-bottom-radius;
+        height: 40px;
+        border-top: 1px solid #fffff5;
+        &:hover { border-top: 1px solid $border-color; };
+      }
+      input[type=text] {
+        padding: 10px;
+        font-size: 1em;
+        border: 1px solid $light-color;
+        &:hover { border-color: $border-color; }
+        @include input-box-shadow;
+      }
+      input[type=submit] {
+        @include alt-button;
+        font-size: 1.1em;
+        width: 360px;
+        padding: 10px;
+      }
+    }
   }
 }
 

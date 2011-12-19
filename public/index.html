@@ -33,11 +33,22 @@
 
     <!-- Templates -->
     <script type="text/template" id="new-wish-template">
-      <input id="new-wish-title" name="wish[title]" type="text" placeholder="Enter a new wish..." />
-      <br />
-      <input id="new-wish-price" name="wish[price]" type="text" placeholder="For how much..." />
-      <br />
-      <input id="post-wish" type="submit" value="Post it!" />
+      <div class='form-header'>
+        <h1>Post what you want here!</h1>
+      </div>
+      <form>
+        <fieldset class='title-content'>
+          <input id="new-wish-title" name="wish[title]" type="text" placeholder="Enter a new wish..." />
+          <input id="new-wish-content" name="wish[content]" type="text" placeholder="For how much..." />
+        </fieldset>
+        <fieldset class='price-expired-at'>
+          <input id="new-wish-expired-at" name="wish[expired_at]" type="text" placeholder="Until..." />
+          <input id="new-wish-price" name="wish[price]" type="text" placeholder="For how much..." />
+        </fieldset>
+        <fieldset>
+          <input id="post-wish" type="submit" value="Post it!" />
+        </fieldset>
+      </form>
     </script>
 
     <script type="text/template" id="wishes-menu-template">
