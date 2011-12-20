@@ -1,6 +1,8 @@
 (function() {
   var app, _ref;
+
   app = (_ref = window.app) != null ? _ref : {};
+
   describe('Wish', function() {
     beforeEach(function() {
       return this.later = 'tomorrow';
@@ -71,4 +73,5 @@
       });
     });
   });
+
 }).call(this);
