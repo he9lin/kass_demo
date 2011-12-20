@@ -58,7 +58,17 @@
       NewWishView.prototype.id = 'new-wish';
 
       NewWishView.prototype.events = {
-        'click input#post-wish': 'save'
+        'click input#post-wish': 'save',
+        'focus input#new-wish-expired-at': 'showTimeSelector',
+        'blur input#new-wish-expired-at': 'hideTimeSelector'
+      };
+
+      NewWishView.prototype.showTimeSelector = function() {
+        return alert('showTimeSelector');
+      };
+
+      NewWishView.prototype.hideTimeSelector = function() {
+        return alert('hideTimeSelector');
       };
 
       NewWishView.prototype.render = function() {

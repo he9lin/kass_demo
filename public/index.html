@@ -43,8 +43,24 @@
           <input id="new-wish-content" name="wish[content]" type="text" placeholder="For how much..." />
         </fieldset>
         <fieldset class='price-expired-at'>
-          <input id="new-wish-expired-at" name="wish[expired_at]" type="text" placeholder="Until..." />
-          <input id="new-wish-price" name="wish[price]" type="text" placeholder="For how much..." />
+          <div class='field wish-price'>
+            <input id="new-wish-expired-at" name="wish[expired_at]" type="text" placeholder="Until..." />
+            <ul class='time-chooser'>
+              <li><h3>1</h3><span>hrs</span></li>
+              <li><h3>2</h3><span>hrs</span></li>
+              <li><h3>3</h3><span>hrs</span></li>
+              <li><h3>4</h3><span>hrs</span></li>
+              <li><h3>1</h3><span>days</span></li>
+              <li><h3>2</h3><span>days</span></li>
+              <li><h3>3</h3><span>days</span></li>
+              <li><h3>4</h3><span>days</span></li>
+              <li><h3>1</h3><span>wks</span></li>
+              <li><h3>2</h3><span>wks</span></li>
+            </ul>
+          </div>
+          <div class='field'>
+            <input id="new-wish-price" name="wish[price]" type="text" placeholder="For how much..." />
+          </div>
         </fieldset>
         <fieldset>
           <input id="post-wish" type="submit" value="Post it!" />

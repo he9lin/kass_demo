@@ -11,6 +11,7 @@ $light-color: #ccc;
 $border-color: #aaa;
 $font-color: #555;
 $bg-color: #f2f2f2;
+$yellow-bg-color: #fffff5;
 
 
 @mixin input-box-shadow {
@@ -96,7 +97,7 @@ div#wishes-map {
     border-bottom: 1px solid $light-color;
     text-indent: 20px;
     background-color: #ebebeb;
-  }
+  }  
   form {
     $input-full-width: 360px - 22px;
     $input-half-width: 150px;
@@ -104,23 +105,51 @@ div#wishes-map {
     padding: 20px;
     width: 360px;
     @include single-text-shadow(#fff,0px,1px,1px);
+    position: relative;
+    
     fieldset {
       margin-bottom: 10px;
+      div.field.wish-price {
+        ul.time-chooser {
+          @include clearfix;
+          @include border-bottom-radius;
+          @include inline-block;
+          border: 1px solid $font-color;
+          position: absolute;
+          top: 170px; left: 20px;
+          background-color: #fff;
+          li {
+            float: left;
+            padding: 5px 0;
+            width: 32px;
+            text-align: center;
+            border-right: 1px solid $light-color;
+            cursor: pointer;
+            &:last-child { border-right: none;}
+            &:hover { background-color: #f9f9f9; }
+            h3 { }
+            span { font-size: 0.7em; }
+          }
+        }
+      }
+      
       &.title-content input  {
         margin: 0;
         width: $input-full-width;
       }
       &.price-expired-at {
         @include clearfix;
-        input {
-          margin: 0;
-          width: $input-half-width;
+        div.field {
           float: left;
+          margin: 0;
+          &.wish-price {
+            margin-right: 15px;
+          }
+        }
+        input {
+          width: $input-half-width;
           @include border-radius;
         }
-      }
-      input#new-wish-expired-at {
-        margin-right: $input-margin-right;
       }
       input#new-wish-title {
         @include border-top-radius;

@@ -21,6 +21,12 @@ jQuery ->
     id: 'new-wish'
     events:
       'click input#post-wish': 'save'
+      'focus input#new-wish-expired-at': 'showTimeSelector'
+      'blur input#new-wish-expired-at': 'hideTimeSelector'
+    showTimeSelector: ->
+      alert 'showTimeSelector'
+    hideTimeSelector: ->
+      alert 'hideTimeSelector'
     render: ->
       $(@el).html @template()
       @
