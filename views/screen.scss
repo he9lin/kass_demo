@@ -213,8 +213,9 @@ div#wishes-menu {
           font-size: 1.1em;
         }
         div.meta {
+          width: 40px;
           float: left;
-          text-align: center;
+          text-align: right;
           h1 { font-size: 1.4em; }
           span.expiration { font-size: 0.8em; color: $border-color; }
         }
