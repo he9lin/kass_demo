@@ -45,14 +45,15 @@
         <fieldset class='price-expired-at'>
           <div class='field wish-price'>
             <input id="new-wish-expired-at" name="wish[expired_at]" type="text" placeholder="Until..." />
-            <ul class='time-chooser'>
-              <li><h3>1</h3><span>hrs</span></li>
-              <li><h3>3</h3><span>hrs</span></li>
-              <li><h3>1</h3><span>wks</span></li>
+            <ul class='time-chooser' style='display:none;'>
               <li class='time'><h3>1</h3><span>hrs</span></li>
+              <li class='time'><h3>2</h3><span>hrs</span></li>
               <li class='time'><h3>3</h3><span>hrs</span></li>
+              <li class='time'><h3>4</h3><span>hrs</span></li>
               <li class='time'><h3>1</h3><span>days</span></li>
+              <li class='time'><h3>2</h3><span>days</span></li>
               <li class='time'><h3>3</h3><span>days</span></li>
+              <li class='time'><h3>4</h3><span>days</span></li>
               <li class='time'><h3>1</h3><span>wks</span></li>
               <li class='time'><h3>2</h3><span>wks</span></li>
             </ul>
@@ -77,7 +78,7 @@
       <div class="info">
         <h3 class="title"><%= title %></h3>
         <div class="meta">
-          <h1 class="price"><%= price %></h1>
+          <h1 class="price">$<%= price %></h1>
         </div>
       </div>
     </script>
@@ -92,7 +93,7 @@
     <script type="text/template" id="detail-wish-tempalte">
       <div id='detail-wish-wrapper'>
         <div class='header'>This person will pay</div>
-        <h3><%= price %> for <%= title %></h3>
+        <h3>$<%= price %> for <%= title %></h3>
       </div>
     </script>
 
