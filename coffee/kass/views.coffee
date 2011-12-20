@@ -70,7 +70,6 @@ jQuery ->
       
   class WishView extends Backbone.View
     initialize: (options) ->
-      # Cache the detailed view
       @detailWishViewCache = (new DetailWishView model: @model).render().el
     template: _.template $('#unfilled-wish-template').html()
     className: 'wish'

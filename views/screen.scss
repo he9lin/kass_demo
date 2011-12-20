@@ -180,7 +180,7 @@ div#wishes-map {
     }
   }
 }
-
+div#sort { text-transform: uppercase; font-size: 0.8em; line-height: 20px; }
 div#wishes-menu {
   @include default-box-shadow;
   height: 100%;
@@ -214,7 +214,9 @@ div#wishes-menu {
         }
         div.meta {
           float: left;
-          font-size: 1.4em;
+          text-align: center;
+          h1 { font-size: 1.4em; }
+          span.expiration { font-size: 0.8em; color: $border-color; }
         }
       }
     }
