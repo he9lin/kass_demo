@@ -2,7 +2,7 @@
 # - has a coordinate array [lat, lng]
 
 class Wish extends Backbone.Model
-  defaults:
+  defaults: ->
     'lat': 121.491 + Math.floor(Math.random()*1000) / 1000
     'lng': 31.233 + Math.floor(Math.random()*1000) / 1000
     
