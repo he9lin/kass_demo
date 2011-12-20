@@ -21,12 +21,20 @@ jQuery ->
     id: 'new-wish'
     events:
       'click input#post-wish': 'save'
-      'focus input#new-wish-expired-at': 'showTimeSelector'
-      'blur input#new-wish-expired-at': 'hideTimeSelector'
-    showTimeSelector: ->
-      alert 'showTimeSelector'
-    hideTimeSelector: ->
-      alert 'hideTimeSelector'
+      'focus input#new-wish-expired-at': 'showTimeChooser'
+      'blur input#new-wish-expired-at': 'hideTimeChooser'
+      'click ul.time-chooser li': 'chooseTime'
+    showTimeChooser: ->
+      @$('ul.time-chooser').show()
+    hideTimeChooser: ->
+      setTimeout -> 
+        @$('ul.time-chooser').hide()
+      , 200
+    chooseTime: (event) ->
+      target = $(event.target)
+      if !target.hasClass('time')
+        target = $(event.target).parent()
+      @$('input#new-wish-expired-at').val target.text()
     render: ->
       $(@el).html @template()
       @

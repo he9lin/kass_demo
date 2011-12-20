@@ -116,7 +116,7 @@ div#wishes-map {
           @include inline-block;
           border: 1px solid $font-color;
           position: absolute;
-          top: 170px; left: 20px;
+          top: 175px; left: 20px;
           background-color: #fff;
           li {
             float: left;
@@ -126,7 +126,6 @@ div#wishes-map {
             border-right: 1px solid $light-color;
             cursor: pointer;
             &:last-child { border-right: none;}
-            &:hover { background-color: #f9f9f9; }
             h3 { }
             span { font-size: 0.7em; }
           }
@@ -154,20 +153,23 @@ div#wishes-map {
       input#new-wish-title {
         @include border-top-radius;
         height: 14px;
-        font-size: 1.2em;
+        font-size: 1.1em;
       }
-      input#new-wish-content {
+      textarea#new-wish-content {
         @include border-bottom-radius;
+        margin: 0;
         height: 40px;
+        width: 338px;
         border-top: 1px solid #fffff5;
         &:hover { border-top: 1px solid $border-color; };
       }
-      input[type=text] {
+      input[type=text],textarea {
         padding: 10px;
         font-size: 1em;
         border: 1px solid $light-color;
         &:hover { border-color: $border-color; }
         @include input-box-shadow;
+        outline: none;
       }
       input[type=submit] {
         @include alt-button;
