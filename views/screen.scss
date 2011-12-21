@@ -66,12 +66,23 @@ body {
 }
 
 div.detail-wish {
-  div.header {
-    font-size: 0.9em;
-    color: $font-color;
-    border-bottom: 1px solid $light-color;
+  div#detail-wish-wrapper {
+    @include border-radius;
+    border: 4px solid rgba(0, 0, 0, 0.3);
+    background-color: #fffff5;
+    div.header {
+      font-size: 0.9em;
+      color: $font-color;
+      border-bottom: 1px solid $light-color;
+      background-color: #ebebeb;
+      padding: 10px;
+    }
+    h3 { 
+      padding: 10px;
+      font-size: 1.1em; 
+      line-height: 30px;
+    } 
   }
-  h3 { font-size: 1.1em; line-height: 30px;} 
 }
 
 a#launch-wish {

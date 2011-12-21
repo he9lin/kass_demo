@@ -22,8 +22,31 @@
     
     <script type="text/javascript">
       function initialize() { 
-        window.app.Map.render()
-        window.app.Wishes.fetch()
+        function WishOverlay(content, point) {
+          this.content = content;
+          this.point   = point;
+        }
+        WishOverlay.prototype = new BMap.Overlay();
+        WishOverlay.prototype.initialize = function(map) {
+          this.map = map;
+          this.div = document.createElement("div");
+          $(this.div).append(this.content);
+          this.map.getPanes().markerPane.appendChild(this.div);
+          return this.div;
+        }
+        WishOverlay.prototype.draw = function() {          
+          position = this.map.pointToOverlayPixel(this.point);
+          this.div.style.position = "absolute";
+          this.div.style.width = '400px';
+          this.div.style.height = '220px';
+          this.div.style.left = position.x + 25 + "px"
+          this.div.style.top  = position.y - 40 + "px"
+        }
+        window.WishOverlay = WishOverlay;
+
+        window.app.Map.render();
+
+        window.app.Wishes.fetch();
       }
       function loadScript() {
         var script = document.createElement("script");

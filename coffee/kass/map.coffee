@@ -4,7 +4,7 @@ class Map
   render: (collection) ->
     @map = new BMap.Map 'map'
     @map.centerAndZoom(new BMap.Point(121.491, 31.233), 11)
-    @map.addControl(new BMap.NavigationControl anchor: BMAP_ANCHOR_TOP_RIGHT)
+    @map.addControl(new BMap.NavigationControl anchor: BMAP_ANCHOR_TOP_RIGHT)   
     
   focus: (lat, lng, content) ->
     point = new BMap.Point lat, lng
@@ -35,13 +35,14 @@ class Map
       lat
     else
       new BMap.Point lat, lng
-    # opts =
-    #   width : 250
-    #   height: 100    
-    #   title : "Hello" 
+                     
+    w = new window.WishOverlay content, point
     
-    infoWindow = new BMap.InfoWindow content
-    @map.openInfoWindow infoWindow, point
+    if @currentOverlay
+      @currentOverlay.hide()
+    
+    @currentOverlay = w
+    @map.addOverlay(@currentOverlay)
   
 @app = window.app ? {}
 @app.Map = new Map

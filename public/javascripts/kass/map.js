@@ -39,10 +39,14 @@
     };
 
     Map.prototype.showInfoWindow = function(content, lat, lng) {
-      var infoWindow, point;
+      var point, w;
       point = lng === void 0 ? lat : new BMap.Point(lat, lng);
-      infoWindow = new BMap.InfoWindow(content);
-      return this.map.openInfoWindow(infoWindow, point);
+      w = new window.WishOverlay(content, point);
+      if (this.currentOverlay) {
+        this.currentOverlay.hide();
+      }
+      this.currentOverlay = w;
+      return this.map.addOverlay(this.currentOverlay);
     };
 
     return Map;
